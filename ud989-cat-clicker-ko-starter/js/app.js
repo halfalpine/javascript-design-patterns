@@ -1,4 +1,4 @@
-let Cat = function(){
+var Cat = function(){
   this.clickCount = ko.observable(0);
   this.catName = ko.observable('Tabby');
   this.imgSrc = ko.observable('img/434164568_fea0ad4013_z.jpg');
@@ -6,7 +6,7 @@ let Cat = function(){
   this.nicknames = ko.observableArray(['Sweetie', 'Bubbles', 'Llama', 'Bruce']);
 
   this.catLevel = ko.computed(function() {
-    let count = this.clickCount();
+    var count = this.clickCount();
     if (count > 0 && count < 10) {
       return "Affectionate";
     } else if (count > 9 && count < 20) {
@@ -20,14 +20,14 @@ let Cat = function(){
     } else if (count > 49) {
       return "Priceless";
     }
-  });
+  }, this);
 };
 
-let ViewModel = function() {
+var ViewModel = function() {
   this.currentCat = ko.observable(new Cat());
 
   this.incrementCounter = function() {
-    this.clickCount(this.clickCount() + 1);
+    this.currentCat().clickCount(this.currentCat().clickCount() + 1);
   };
 };
 
