@@ -20,15 +20,15 @@ let Cat = function(){
     } else if (count > 49) {
       return "Priceless";
     }
-  }
+  });
 };
 
-let viewModel = function() {
+let ViewModel = function() {
   this.currentCat = ko.observable(new Cat());
 
   this.incrementCounter = function() {
     this.clickCount(this.clickCount() + 1);
   };
-});
+};
 
-ko.applyBindings(viewModel);
+ko.applyBindings(new ViewModel());
