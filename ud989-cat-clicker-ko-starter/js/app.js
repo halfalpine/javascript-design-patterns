@@ -1,4 +1,4 @@
-var Cat = function(){
+let Cat = function(){
   this.clickCount = ko.observable(0);
   this.catName = ko.observable('Tabby');
   this.imgSrc = ko.observable('img/434164568_fea0ad4013_z.jpg');
@@ -20,13 +20,15 @@ var Cat = function(){
     } else if (count > 49) {
       return "Priceless";
     }
-}
-
-var viewModel = function() {
-    this.incrementCounter = function() {
-      this.clickCount(this.clickCount() + 1);
-    };
-  });
+  }
 };
+
+let viewModel = function() {
+  this.currentCat = ko.observable( new Cat() );
+
+  this.incrementCounter = function() {
+    this.clickCount(this.clickCount() + 1);
+  };
+});
 
 ko.applyBindings(viewModel);
